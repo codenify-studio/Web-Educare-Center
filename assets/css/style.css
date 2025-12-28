@@ -1,0 +1,520 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url(font.css);
+/* common css starts*/
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+abbr,
+address,
+article,
+aside,
+audio,
+blockquote,
+body,
+canvas,
+caption,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+div,
+dl,
+dt,
+em,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+p,
+pre,
+q,
+samp,
+section,
+small,
+span,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  line-height: 20px;
+  color: #000000;
+  /* background-color: #090b06; */
+  background-color: #000000;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.chexbox,
+div,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+input,
+label,
+li,
+ol,
+option,
+p,
+radiobutton,
+select,
+td,
+textarea,
+tr,
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+ol {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+a,
+button {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
+  color: #444444;
+  -moz-transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+a:hover {
+  -moz-transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  text-decoration: none;
+}
+img,
+svg {
+  width: 100%;
+  height: 100%;
+}
+:root {
+  --body: "Inter", sans-serif;
+  --Primary-color: #109efd;
+  --secondary: #ffd60c;
+  --heading-font: "educare";
+  --stylist-font: "Fraunces", serif;
+}
+/* common css end*/
+@media (min-width: 1600px) {
+  .my_xl_container {
+    max-width: 1440px;
+  }
+}
+
+.banner_container {
+  height: 920px;
+  width: 100%;
+  background: #444444;
+  position: relative;
+  overflow: hidden;
+}
+.video_wraper {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  /* background: #109efd; */
+}
+.video_wraper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.blur-layer {
+  position: absolute;
+  content: "";
+  top: -50%;
+  right: -30%;
+  z-index: 5;
+}
+.content_wrapper {
+  /* max-width: 1440px; */
+  top: 170px;
+  position: relative;
+  margin: 0 auto;
+  /* background: #109efd; */
+  /* border: 1px solid #ffffff; */
+  min-height: 400px;
+  z-index: 5;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+}
+.banner_text {
+  font-size: 92px;
+  line-height: 0.8;
+  font-family: var(--heading-font);
+  font-weight: 500;
+  letter-spacing: -5px;
+  color: #ffffff;
+  max-width: 750px;
+  text-align: center;
+}
+/* .stylist_font {
+  font-family: var(--stylist-font);
+  font-weight: 300;
+  font-style: normal;
+}
+.stylist_font_italic {
+  font-family: var(--stylist-font);
+  font-weight: 300;
+  font-style: italic;
+}
+.yellow_text {
+  color: var(--secondary);
+} */
+
+.banner_text span:nth-of-type(1) {
+  color: var(--secondary);
+}
+
+.banner_text span:nth-of-type(2) {
+  font-family: var(--stylist-font);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.banner_text span:nth-of-type(3) {
+  font-family: var(--stylist-font);
+  font-weight: 300;
+  font-style: normal;
+}
+.review_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  gap: 10px;
+}
+.review_thumbs {
+  max-width: 170px;
+}
+.review_thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.review_box p {
+  color: #fff;
+  max-width: 240px;
+}
+.stars::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* REQUIRED for solid icons */
+  color: #f5c518;
+  margin-left: 6px;
+}
+.secondary_button {
+  font-family: var(--body);
+  font-size: 17px;
+  color: #000000;
+  background: #ffffff;
+  padding: 10px;
+  min-width: 176px;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 50px;
+  margin-top: 25px;
+}
+.first-head {
+  color: #ffffff;
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+.canva-sec {
+  position: relative;
+  margin-top: -300px;
+  padding-bottom: 50px;
+  z-index: 5;
+}
+.canva-container {
+  /* max-width: 1440px; */
+}
+.canva_main {
+  padding: 4px;
+  background: #ffffff30;
+  border: 1px solid #fff;
+  border-radius: 34px;
+}
+.canva-image {
+  width: 100%;
+  max-width: 1440px;
+  height: 631px;
+}
+.canva-image img {
+  width: 100%;
+  height: 100%;
+}
+.canva-overlay {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 200px;
+  bottom: 50px;
+  left: 0;
+  background: #000000;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 90%
+  );
+  z-index: 5;
+}
+.canva-sec-image {
+  position: absolute;
+  content: "";
+  top: -200px;
+  left: 50%;
+  transform: translateX(-52%);
+  z-index: -1;
+  /* max-width: 1920px; */
+}
+.canva-sec-image {
+  max-height: 820px;
+  width: 100%;
+  overflow: hidden;
+}
+.canva-sec-image img {
+  max-height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.canva-inner {
+  background: #000000;
+  border-radius: 30px;
+  /* padding: 50px; */
+  overflow: hidden;
+  min-height: 600px;
+}
+.canva_header {
+  background: #000000;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333333;
+}
+.canva_logo_box {
+  background: #222222;
+  padding: 7px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  display: inline-flex;
+  border-radius: 6px;
+}
+.canva_fav_icon {
+  user-select: none;
+  width: 24px;
+  height: auto;
+}
+.canva_fav_icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.canva_logo_box i {
+  margin-top: 2px;
+  font-size: 20px;
+  color: #fff;
+}
+.canva_logo {
+  width: 20%;
+}
+.canva_view_port {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.view_port_innerbase {
+  width: 100%;
+  max-width: 170px;
+  border: 1px solid #333;
+  background: #222222;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.desktop_view {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+}
+.icon_desktop {
+  max-width: 22px;
+  height: auto;
+}
+.desktop_size{
+  width: 100%;
+}
+.desktop_size p{
+  color: #eaeaea;
+  text-align: center;
+  font-size: 15px;
+
+}
+.view_port_innerbase .active {
+  background: #000;
+}
+.review_thumb_box {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.canva_content {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+#toggleBtn {
+  cursor: pointer;
+}
+/* Panels */
+.panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* Center ALWAYS full width */
+.canva_center {
+  left: 0;
+  right: 0;
+  background: #cfcfcf;
+  z-index: 1;
+}
+
+/* Left overlay */
+.canva_left {
+  left: 0;
+  width: 25%;
+  background: #e0e0e0;
+  z-index: 2;
+}
+
+/* Right overlay */
+.canva_right {
+  right: 0;
+  width: 25%;
+  background: #e0e0e0;
+  z-index: 2;
+}
+
+/* 🔥 TOGGLED STATE → hide overlays */
+.canva_content.expanded .canva_left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.canva_content.expanded .canva_right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Normal state */
+.canva_left,
+.canva_right {
+  transform: translateX(0);
+  opacity: 1;
+}
+.canva_center {
+  text-align: center;
+}
+/* 👉 NORMAL STATE (slide IN) */
+.canva_left,
+.canva_right {
+  transform: translateX(0);
+}
+#toggleBtn i{
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+#toggleBtn.rotated i {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+#toggleBtn i {
+  user-select: none;
+  cursor: pointer;
+}
+
