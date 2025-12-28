@@ -12,7 +12,14 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/assets/owl.carousel.css"
     />
     <link rel="stylesheet" href="./assets/css/aos.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
@@ -32,9 +39,10 @@
         <p class="first-head">Design in Details</p>
         <h1
           class="banner_text"
+          id="head-text"
           data-aos="fade-up"
-          data-aos-anchor-placement="top-bottom"
-          data-aos-duration="3000"
+          -aos-anchor-placement="top-bottom"
+          data-aos-duration="1500"
         >
           <span>Crafted</span>
           <span>Websites</span>
@@ -56,7 +64,7 @@
 
     <!-- ***canva Section**** -->
     <section class="container-fluid canva-sec">
-      <!-- <div class="canva-overlay"></div> -->
+      <div class="canva-overlay"></div>
       <figure class="canva-sec-image">
         <img src="./assets/images/img-element-blue.png" alt="" />
       </figure>
@@ -76,37 +84,88 @@
                 <div class="view_port_innerbase">
                   <div class="desktop_view active">
                     <figure class="icon_desktop">
-                      <img src="./assets/images/icon-desktop.png" alt="" />
+                      <img src="/assets/images/icon-desktop.png" alt="" />
                     </figure>
                   </div>
                   <div class="desktop_view">
                     <figure class="icon_desktop">
-                      <img src="./assets/images/icon-desktop.png" alt="" />
+                      <img src="/assets/images/icon-phone.svg" alt="" />
                     </figure>
                   </div>
                 </div>
                 <div class="view_port_innerbase">
                   <div class="desktop_size">
-                    <p>w 1707px | 100% </p>
+                    <p>w 1707px | 100%</p>
                   </div>
                 </div>
               </div>
               <div class="review_thumb_box">
-                <div class="">
-                  <figure class="">
+                <div>
+                  <figure class="review_thumb_2">
                     <img src="./assets/images/img-review-thumbs_2.png" alt="" />
                   </figure>
                 </div>
               </div>
             </div>
             <div class="canva_content" id="contentRow">
-              <div class="panel canva_left">canva_Left Panel</div>
-              <div class="panel canva_center">  <div class="video_wraper">
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="./assets/images/banner-video-2.mp4" type="video/mp4" />
-        </video>
-      </div></div>
-              <div class="panel canva_right">Right Panel</div>
+              <div class="panel canva_left">
+                <div class="canva_left_content">
+                  <ul>
+                    <a href="#" class="active">Home</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Our Works</a>
+                    <a href="#">Services</a>
+                    <a href="#">Our Team</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">CTA</a>
+                    <a href="#">Footer</a>
+                  </ul>
+                </div>
+              </div>
+              <div class="panel canva_center">
+                <div class="portfolio_wrapper myslider owl-carousel">
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg/v1/fill/w_780,h_780,q_90,enc_avif,quality_auto/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg" alt="" />
+                  </div>
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_a27a60894c6849798d0cd7bc93409061~mv2.jpg/v1/fill/w_780,h_780,q_90,enc_avif,quality_auto/554ccd_a27a60894c6849798d0cd7bc93409061~mv2.jpg" alt="" />
+                  </div>
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_64d574764467438eb916753cc4f6e293~mv2.jpg/v1/fill/w_1560,h_1560,q_90,enc_avif,quality_auto/554ccd_64d574764467438eb916753cc4f6e293~mv2.jpg" alt="" />
+                  </div>
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_54a29bad112e430f8ea2ab186c5eeb39~mv2.jpg/v1/fill/w_1560,h_1560,q_90,enc_avif,quality_auto/554ccd_54a29bad112e430f8ea2ab186c5eeb39~mv2.jpg" alt="" />
+                  </div>
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_47eab987264e44d7ab403c076f9033f0~mv2.jpg/v1/fill/w_1560,h_1560,q_90,enc_avif,quality_auto/554ccd_47eab987264e44d7ab403c076f9033f0~mv2.jpg" alt="" />
+                  </div>
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg/v1/fill/w_780,h_780,q_90,enc_avif,quality_auto/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg" alt="" />
+                  </div>
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg/v1/fill/w_780,h_780,q_90,enc_avif,quality_auto/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg" alt="" />
+                  </div>
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg/v1/fill/w_780,h_780,q_90,enc_avif,quality_auto/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg" alt="" />
+                  </div>
+                  <div class="portfolio_image">
+                    <img src="https://static.wixstatic.com/media/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg/v1/fill/w_780,h_780,q_90,enc_avif,quality_auto/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg" alt="" />
+                  </div>
+                </div>
+                <!-- <div class="video_wraper">
+                  <video autoplay muted loop playsinline preload="auto">
+                    <source
+                      src="./assets/images/banner-video-2.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div> -->
+              </div>
+              <div class="panel canva_right">
+                <figure class="right_panel_image">
+                  <img src="/assets/images/img-tools.jpg" alt="" />
+                </figure>
+              </div>
             </div>
           </div>
           <!-- <figure class="canva-image">
@@ -119,13 +178,15 @@
 
     <script src="./assets/js/aos.js"></script>
     <script>
-      AOS.init();
+      AOS.init({ once: false });
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.2/owl.carousel.min.js"></script>
     <script src="./assets/js/custom.js"></script>
   </body>
 </html>
