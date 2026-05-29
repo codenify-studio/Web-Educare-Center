@@ -1,45 +1,250 @@
-const toggleBtn = document.getElementById("toggleBtn");
-const contentRow = document.getElementById("contentRow");
+function locomotiveScript() {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(SplitText);
 
-toggleBtn.addEventListener("click", () => {
-  contentRow.classList.toggle("expanded");
-  toggleBtn.classList.toggle("rotated");
-});
+  // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
 
-$(".myslider").owlCarousel({
-  loop: true,
-  autoplay: true,
-  slideTransition: "linear",
-  autoplayHoverPause: false,
-  autoplaySpeed: 8000,
-  autoplayTimeout: 0,
-  smartSpeed: 8000,
-  margin: 40,
-  nav: false,
-  dots: false,
-  mouseDrag: false, 
-  touchDrag: false, 
-  pullDrag: false,  
-  freeDrag: false,
-  // lazyLoad: true,
-  responsive: {
-    0: {
-      items: 1,
-      loop: true,
-    },
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector("#main"),
+    smooth: true,
+  });
+  // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+  locoScroll.on("scroll", ScrollTrigger.update);
 
-    600: {
-      items: 2,
-      loop: true,
+  // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
+  ScrollTrigger.scrollerProxy("#main", {
+    scrollTop(value) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
+    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
     },
-    768: {
-      items: 3,
-      loop: true,
+    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+    pinType: document.querySelector("#main").style.transform
+      ? "transform"
+      : "fixed",
+  });
+
+  // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+  // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+  ScrollTrigger.refresh();
+}
+locomotiveScript();
+
+function canvaToggle() {
+  const toggleBtn = document.getElementById("toggleBtn");
+  const contentRow = document.getElementById("contentRow");
+
+  toggleBtn.addEventListener("click", () => {
+    contentRow.classList.toggle("expanded");
+    toggleBtn.classList.toggle("rotated");
+  });
+}
+canvaToggle();
+//Swiper Script
+function canvaSlider() {
+  const swiper = new Swiper(".myslider", {
+    slidesPerView: "auto",
+    spaceBetween: 30,
+    loop: true,
+    speed: 12000,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
     },
-    992: {
-      items: 3,
-      loop: true,
+    allowTouchMove: false,
+  });
+}
+canvaSlider();
+
+function AboutusAnimation() {
+  var entryTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#about-section",
+      scroller: "#main",
+      start: "top 80%",
+      once: true,
     },
-    1200: { items: 2 },
-  },
-});
+  });
+  entryTimeline.fromTo(
+    ".about-head .line span.first",
+    { y: "100%", opacity: 0 },
+    { y: "0%", opacity: 1, ease: "power3.out", duration: 1, stagger: 0.1 },
+  );
+  entryTimeline.fromTo(
+    ".about-head .line span.last",
+    { y: "-100%", opacity: 0 },
+    { y: "0%", opacity: 1, ease: "power3.out", duration: 1, stagger: 0.1 },
+    "-=0.6",
+  );
+  entryTimeline.to(".about-head .line span.first", {
+    x: "10%",
+    ease: "power3.out",
+  });
+  entryTimeline.fromTo(
+    ".about-img-container",
+    { y: 100, opacity: 0, scale: 0.9 },
+    { y: 0, opacity: 1, scale: 1, ease: "power3.out", duration: 1 },
+    "-=0.6",
+  );
+  entryTimeline.fromTo(
+    ".about-text p",
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, stagger: 0.15, ease: "power3.out", duration: 1 },
+    "-=0.8",
+  );
+  gsap.to(".about-img-container", {
+    width: "100%",
+    height: "80vh",
+    top: "100vh",
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#about-section",
+      scroller: "#main",
+      start: "top top",
+      end: "+=100%",
+      scrub: 1,
+    },
+  });
+}
+// AboutusAnimation();
+
+function aboutTimeAnima() {
+  var aboutTime = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#about-section",
+      scroller: "#main",
+      start: "top 80%",
+      once: true,
+    },
+  });
+  aboutTime.fromTo(
+    ".about-head .line span.first",
+    { y: "100%", opacity: 0 },
+    { y: "0", opacity: 1, ease: "Power3.out", duration: 0.8, stagger: 0.1 },
+  );
+  aboutTime.fromTo(
+    ".about-head .line span.last",
+    { y: "-100%", opacity: 0 },
+    { y: "0", opacity: 1, ease: "Power3.out", duration: 0.8, stagger: 0.1 },
+    "-=0.6",
+  );
+  aboutTime.to(".about-head .line span.first", {
+    x: "10%",
+    ease: "Power3.out",
+  });
+  aboutTime.fromTo(
+    ".about-img-container",
+    { y: "50%", opacity: 0, scale: 0.9 },
+    { y: "0", opacity: 1, scale: 1, ease: "Power3.out", duration: 0.8 },
+    "-=0.9",
+  );
+  aboutTime.fromTo(
+    "about-text p",
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, stagger: 0.15, ease: "Power3.out", duration: 1 },
+    "-=0.8",
+  );
+  gsap.to(".about-img-container", {
+    width: "100%",
+    height: "80vh",
+    top: "100vh",
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#about-section",
+      scroller: "#main",
+      start: "top top",
+      end: "+=100%",
+      scrub: 1,
+      anticipatePin: 1,
+    },
+  });
+}
+aboutTimeAnima();
+
+function shuffleText() {
+  jQuery("document").ready(function ($) {
+    var velocity = 100;
+
+    var shuffleElement = $(".shuffle");
+
+    $.each(shuffleElement, function (index, item) {
+      $(item).attr("data-text", $(item).text());
+    });
+
+    var shuffle = function (o) {
+      for (
+        var j, x, i = o.length;
+        i;
+        j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x
+      );
+      return o;
+    };
+
+    var shuffleText = function (element, originalText) {
+      var elementTextArray = [];
+      var randomText = [];
+
+      for (i = 0; i < originalText.length; i++) {
+        elementTextArray.push(originalText.charAt([i]));
+      }
+
+      var repeatShuffle = function (times, index) {
+        if (index == times) {
+          element.text(originalText);
+          return;
+        }
+
+        setTimeout(function () {
+          randomText = shuffle(elementTextArray);
+          for (var i = 0; i < index; i++) {
+            randomText[i] = originalText[i];
+          }
+          randomText = randomText.join("");
+          element.text(randomText);
+          index++;
+          repeatShuffle(times, index);
+        }, velocity);
+      };
+      repeatShuffle(element.text().length, 0);
+    };
+
+    shuffleElement.mouseenter(function () {
+      shuffleText($(this), $(this).data("text"));
+    });
+  });
+}
+shuffleText();
+
+document
+  .querySelector("#proven-result")
+  .addEventListener("mouseenter", function () {
+    let counter = document.querySelectorAll(".counter");
+    let arr = Array.from(counter);
+
+    arr.map(function (item) {
+      let startnumber = 0;
+
+      function counterup() {
+        startnumber++;
+        item.innerHTML = startnumber;
+
+        if (startnumber == item.dataset.number) {
+          clearInterval(stop);
+        }
+      }
+
+      let stop = setInterval(function () {
+        counterup();
+      }, 50);
+    });
+  });
