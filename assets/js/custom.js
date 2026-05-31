@@ -66,58 +66,6 @@ function canvaSlider() {
 }
 canvaSlider();
 
-function AboutusAnimation() {
-  var entryTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#about-section",
-      scroller: "#main",
-      start: "top 80%",
-      once: true,
-    },
-  });
-  entryTimeline.fromTo(
-    ".about-head .line span.first",
-    { y: "100%", opacity: 0 },
-    { y: "0%", opacity: 1, ease: "power3.out", duration: 1, stagger: 0.1 },
-  );
-  entryTimeline.fromTo(
-    ".about-head .line span.last",
-    { y: "-100%", opacity: 0 },
-    { y: "0%", opacity: 1, ease: "power3.out", duration: 1, stagger: 0.1 },
-    "-=0.6",
-  );
-  entryTimeline.to(".about-head .line span.first", {
-    x: "10%",
-    ease: "power3.out",
-  });
-  entryTimeline.fromTo(
-    ".about-img-container",
-    { y: 100, opacity: 0, scale: 0.9 },
-    { y: 0, opacity: 1, scale: 1, ease: "power3.out", duration: 1 },
-    "-=0.6",
-  );
-  entryTimeline.fromTo(
-    ".about-text p",
-    { y: 30, opacity: 0 },
-    { y: 0, opacity: 1, stagger: 0.15, ease: "power3.out", duration: 1 },
-    "-=0.8",
-  );
-  gsap.to(".about-img-container", {
-    width: "100%",
-    height: "80vh",
-    top: "100vh",
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#about-section",
-      scroller: "#main",
-      start: "top top",
-      end: "+=100%",
-      scrub: 1,
-    },
-  });
-}
-// AboutusAnimation();
-
 function aboutTimeAnima() {
   var aboutTime = gsap.timeline({
     scrollTrigger: {
@@ -224,27 +172,32 @@ function shuffleText() {
   });
 }
 shuffleText();
+function resultCounter() {
+  let counter = document.querySelectorAll(".counter");
+  let arr = Array.from(counter);
 
-document
-  .querySelector("#proven-result")
-  .addEventListener("mouseenter", function () {
-    let counter = document.querySelectorAll(".counter");
-    let arr = Array.from(counter);
+  arr.map(function (item) {
+    let startnumber = 0;
 
-    arr.map(function (item) {
-      let startnumber = 0;
+    function counterup() {
+      startnumber++;
+      item.innerHTML = startnumber;
 
-      function counterup() {
-        startnumber++;
-        item.innerHTML = startnumber;
-
-        if (startnumber == item.dataset.number) {
-          clearInterval(stop);
-        }
+      if (startnumber == item.dataset.number) {
+        clearInterval(stop);
       }
+    }
 
-      let stop = setInterval(function () {
-        counterup();
-      }, 50);
-    });
+    let stop = setInterval(function () {
+      counterup();
+    }, 50);
   });
+}
+ScrollTrigger.create({
+  scroller: "#main",
+  trigger: "#proven-result",
+  start: "top 30%",
+  once: true,
+  onEnter: () => resultCounter(),
+});
+

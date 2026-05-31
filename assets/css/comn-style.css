@@ -168,17 +168,18 @@ body {
   --secondary: #ffc107;
   --Text-color: #9f9f9f;
   --grey-color: #b3b3b3;
+  --dark-text:#030811;
   --dark-bg: #030811;
   --dark-overlay: linear-gradient(to bottom, #03081100 0%, #030811 100%);
   --heading-font: "Inter", sans-serif;
   --stylist-font: "Fraunces", serif;
 }
 .comn-head {
-  font-size: clamp(36px, 6vw, 60px);
+  font-size: clamp(36px, 6vw, 55px);
   line-height: 1.1;
   font-family: var(--heading-font);
   font-weight: 500;
-  letter-spacing: -5px;
+  letter-spacing: -3px;
   color: #ffffff;
 }
 .head-big {
@@ -196,12 +197,12 @@ body {
 }
 
 .comn-subhead {
-  font-size: clamp(16px, 2.5vw, 20px);
+  font-size: clamp(16px, 2vw, 16px);
   line-height: 1.1;
   font-family: var(--heading-font);
   text-transform: uppercase;
   font-weight: 400;
-  letter-spacing: -4px;
+  letter-spacing: 0px;
   color: var(--grey-color);
 }
 .comn-text p {
@@ -218,13 +219,7 @@ body {
   display: inline-block;
 }
 .gradient-text {
-  background: linear-gradient(
-    90deg,
-    #7c7e86 3%,
-    #ffffff 29%,
-    #ffffff 80%,
-    #7c7e86 99%
-  );
+  background: linear-gradient(90deg, #7c7e86 3%, #ffffff 29%, #ffffff 80%, #7c7e86 99%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -251,16 +246,16 @@ body {
 } */
 .blur-bg {
   position: absolute;
-  width: 888px;
-  height: 777px;
+  width: var(--width);
+  height: var(--height);
   top: var(--top);
   right: var(--right);
-  background: #063c6138;
+  background: #063d617d;
   filter: blur(184px);
   border-radius: 50%;
-  z-index: 1;
+  z-index: 3;
 }
-b{
+b {
   font-weight: 600;
 }
 
