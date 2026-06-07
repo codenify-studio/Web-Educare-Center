@@ -168,7 +168,7 @@ body {
   --secondary: #ffc107;
   --Text-color: #9f9f9f;
   --grey-color: #b3b3b3;
-  --dark-text:#030811;
+  --dark-text: #030811;
   --dark-bg: #030811;
   --dark-overlay: linear-gradient(to bottom, #03081100 0%, #030811 100%);
   --heading-font: "Inter", sans-serif;
@@ -257,6 +257,46 @@ body {
 }
 b {
   font-weight: 600;
+}
+.ctm-link {
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 1;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 2px;
+  width: max-content;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.ctm-link::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  transition: 0.4s linear;
+  transform: translateX(-150%);
+}
+.ctm-link:hover::after{
+  transform: translateX(0%);
+}
+.ctm-link::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: #ffffff;
+  transition: 0.1s linear;
+  transform: translateX(0%);
+}
+.ctm-link:hover::before{
+  right: 0;
+  transform: translateX(150%);
 }
 
 /* common css end*/

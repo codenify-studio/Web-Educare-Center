@@ -14,9 +14,7 @@ function locomotiveScript() {
   // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
   ScrollTrigger.scrollerProxy("#main", {
     scrollTop(value) {
-      return arguments.length
-        ? locoScroll.scrollTo(value, 0, 0)
-        : locoScroll.scroll.instance.scroll.y;
+      return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
     }, // we don't have to define a scrollLeft because we're only scrolling vertically.
     getBoundingClientRect() {
       return {
@@ -27,9 +25,7 @@ function locomotiveScript() {
       };
     },
     // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-    pinType: document.querySelector("#main").style.transform
-      ? "transform"
-      : "fixed",
+    pinType: document.querySelector("#main").style.transform ? "transform" : "fixed",
   });
 
   // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
@@ -96,12 +92,7 @@ function aboutTimeAnima() {
     { y: "0", opacity: 1, scale: 1, ease: "Power3.out", duration: 0.8 },
     "-=0.9",
   );
-  aboutTime.fromTo(
-    "about-text p",
-    { y: 30, opacity: 0 },
-    { y: 0, opacity: 1, stagger: 0.15, ease: "Power3.out", duration: 1 },
-    "-=0.8",
-  );
+  aboutTime.fromTo("about-text p", { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.15, ease: "Power3.out", duration: 1 }, "-=0.8");
   gsap.to(".about-img-container", {
     width: "100%",
     height: "80vh",
@@ -130,11 +121,7 @@ function shuffleText() {
     });
 
     var shuffle = function (o) {
-      for (
-        var j, x, i = o.length;
-        i;
-        j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x
-      );
+      for (var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
       return o;
     };
 
@@ -200,4 +187,102 @@ ScrollTrigger.create({
   once: true,
   onEnter: () => resultCounter(),
 });
+function ServiceContentAnimation() {
+  const serviceTigger = {
+    scroller: "#main",
+    trigger: "#our-services",
+    start: "top 30%",
+  };
+  gsap.from(".service-content h2, .service-content p", {
+    x: 500,
+    y: 50,
+    scale: 0.7,
+    opacity: 0.3,
+    duration: 1,
+    ease: "power1.out",
+    stagger: 0.2,
+    scrollTrigger: serviceTigger,
+  });
+  gsap.from(".service-technology h4", {
+    x: 500,
+    y: -50,
+    duration: 1,
+    ease: "power1.out",
+    stagger: {
+      amount: 0.2,
+    },
+    scrollTrigger: serviceTigger,
+  });
+}
+ServiceContentAnimation();
+serviceScroller();
 
+const reviewScroll = {
+  scroller: "#main",
+  trigger: "#our-reviews",
+  start: "top 50%",
+  scrub: 1,
+};
+gsap.fromTo(
+  ".review-wrapper1",
+  { x: 0, duration: 1.5 },
+  {
+    x: -200,
+    duration: 1.5,
+    scrollTrigger: reviewScroll,
+  },
+);
+gsap.fromTo(
+  ".review-wrapper2",
+  { x: 0, duration: 1.5 },
+  {
+    x: 200,
+    duration: 1.5,
+    scrollTrigger: reviewScroll,
+  },
+);
+gsap.fromTo(
+  ".review-wrapper3",
+  { x: 50, duration: 1.5 },
+  {
+    x: -250,
+    duration: 1.5,
+    scrollTrigger: reviewScroll,
+  },
+);
+
+function serviceScroller() {
+  //Horizontal Scroll Galleries
+  if (document.getElementById("our-services")) {
+    const horizontalSections = gsap.utils.toArray(".service-container-wrapper");
+
+    horizontalSections.forEach((sec) => {
+      const pinWrap = sec.querySelector(".service-container-strip");
+
+      let horizontalScrollLength = 0;
+
+      function refresh() {
+        const lastItem = pinWrap.lastElementChild;
+
+        horizontalScrollLength = lastItem.offsetLeft - (window.innerWidth - lastItem.offsetWidth) / 10; // half of 30px gap
+      }
+
+      refresh();
+
+      gsap.to(pinWrap, {
+        x: () => -horizontalScrollLength,
+        ease: "none",
+        scrollTrigger: {
+          scroller: "#main",
+          trigger: sec,
+          pin: true,
+          scrub: 1,
+          start: "center center",
+          end: () => `+=${horizontalScrollLength}`,
+          invalidateOnRefresh: true,
+          // markers: true,
+        },
+      });
+    });
+  }
+}
