@@ -215,41 +215,44 @@ function ServiceContentAnimation() {
   });
 }
 ServiceContentAnimation();
-serviceScroller();
+// serviceScroller();
 
-const reviewScroll = {
-  scroller: "#main",
-  trigger: "#our-reviews",
-  start: "top 50%",
-  scrub: 1,
-};
-gsap.fromTo(
-  ".review-wrapper1",
-  { x: 0, duration: 1.5 },
-  {
-    x: -200,
-    duration: 1.5,
-    scrollTrigger: reviewScroll,
-  },
-);
-gsap.fromTo(
-  ".review-wrapper2",
-  { x: 0, duration: 1.5 },
-  {
-    x: 200,
-    duration: 1.5,
-    scrollTrigger: reviewScroll,
-  },
-);
-gsap.fromTo(
-  ".review-wrapper3",
-  { x: 50, duration: 1.5 },
-  {
-    x: -250,
-    duration: 1.5,
-    scrollTrigger: reviewScroll,
-  },
-);
+function reviewAnimation() {
+  const reviewScroll = {
+    scroller: "#main",
+    trigger: "#our-reviews",
+    start: "top 50%",
+    scrub: 1,
+  };
+  gsap.fromTo(
+    ".review-wrapper1",
+    { x: 0, duration: 1.5 },
+    {
+      x: -200,
+      duration: 1.5,
+      scrollTrigger: reviewScroll,
+    },
+  );
+  gsap.fromTo(
+    ".review-wrapper2",
+    { x: 0, duration: 1.5 },
+    {
+      x: 200,
+      duration: 1.5,
+      scrollTrigger: reviewScroll,
+    },
+  );
+  gsap.fromTo(
+    ".review-wrapper3",
+    { x: 50, duration: 1.5 },
+    {
+      x: -250,
+      duration: 1.5,
+      scrollTrigger: reviewScroll,
+    },
+  );
+}
+reviewAnimation();
 
 function serviceScroller() {
   //Horizontal Scroll Galleries
@@ -278,7 +281,7 @@ function serviceScroller() {
           pin: true,
           scrub: 1,
           start: "center center",
-          end: () => `+=${horizontalScrollLength}`,
+          end: () => `+=${horizontalScrollLength + 800}`,
           invalidateOnRefresh: true,
           // markers: true,
         },
@@ -286,3 +289,17 @@ function serviceScroller() {
     });
   }
 }
+let horizontalSection = document.querySelector(".service-container-strip");
+
+gsap.to(".service-container-strip", {
+  x: () => -(horizontalSection.scrollWidth - window.innerWidth),
+  scrollTrigger: {
+    scroller:"#main",
+    trigger: ".service-container-strip",
+    start: "center center",
+    end: () => "+=" + (horizontalSection.scrollWidth),
+    pin: "#our-services",
+    scrub: 1,
+    invalidateOnRefresh: true
+  }
+})

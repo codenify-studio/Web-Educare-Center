@@ -890,6 +890,15 @@
   will-change: transform;
   position: relative;
 }
+.container-mid{
+  overflow-x: hidden;
+}
+.serv-buffer{
+  width: 5%;
+  /* height: 200px; */
+  /* background-color: red; */
+  flex-shrink: 0;
+}
 .service-outerContainer {
   position: relative;
   overflow: hidden;
