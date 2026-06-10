@@ -215,7 +215,7 @@ function ServiceContentAnimation() {
   });
 }
 ServiceContentAnimation();
-// serviceScroller();
+serviceScroller();
 
 function reviewAnimation() {
   const reviewScroll = {
@@ -255,51 +255,18 @@ function reviewAnimation() {
 reviewAnimation();
 
 function serviceScroller() {
-  //Horizontal Scroll Galleries
-  if (document.getElementById("our-services")) {
-    const horizontalSections = gsap.utils.toArray(".service-container-wrapper");
+  let horizontalSection = document.querySelector(".service-container-strip");
 
-    horizontalSections.forEach((sec) => {
-      const pinWrap = sec.querySelector(".service-container-strip");
-
-      let horizontalScrollLength = 0;
-
-      function refresh() {
-        const lastItem = pinWrap.lastElementChild;
-
-        horizontalScrollLength = lastItem.offsetLeft - (window.innerWidth - lastItem.offsetWidth) / 10; // half of 30px gap
-      }
-
-      refresh();
-
-      gsap.to(pinWrap, {
-        x: () => -horizontalScrollLength,
-        ease: "none",
-        scrollTrigger: {
-          scroller: "#main",
-          trigger: sec,
-          pin: true,
-          scrub: 1,
-          start: "center center",
-          end: () => `+=${horizontalScrollLength + 800}`,
-          invalidateOnRefresh: true,
-          // markers: true,
-        },
-      });
-    });
-  }
+  gsap.to(".service-container-strip", {
+    x: () => -(horizontalSection.scrollWidth - window.innerWidth),
+    scrollTrigger: {
+      scroller: "#main",
+      trigger: ".service-container-strip",
+      start: "center center",
+      end: () => "+=" + horizontalSection.scrollWidth,
+      pin: "#our-services",
+      scrub: 1,
+      invalidateOnRefresh: true,
+    },
+  });
 }
-let horizontalSection = document.querySelector(".service-container-strip");
-
-gsap.to(".service-container-strip", {
-  x: () => -(horizontalSection.scrollWidth - window.innerWidth),
-  scrollTrigger: {
-    scroller:"#main",
-    trigger: ".service-container-strip",
-    start: "center center",
-    end: () => "+=" + (horizontalSection.scrollWidth),
-    pin: "#our-services",
-    scrub: 1,
-    invalidateOnRefresh: true
-  }
-})
