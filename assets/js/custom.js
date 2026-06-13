@@ -92,7 +92,7 @@ function aboutTimeAnima() {
     { y: "0", opacity: 1, scale: 1, ease: "Power3.out", duration: 0.8 },
     "-=0.9",
   );
-  aboutTime.fromTo("about-text p", { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.15, ease: "Power3.out", duration: 1 }, "-=0.8");
+  aboutTime.fromTo(".about-text p", { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.15, ease: "Power3.out", duration: 1 }, "-=0.8");
   gsap.to(".about-img-container", {
     width: "100%",
     height: "80vh",
@@ -194,7 +194,7 @@ function ServiceContentAnimation() {
     start: "top 30%",
   };
   gsap.from(".service-content h2, .service-content p", {
-    x: 500,
+    x: 300,
     y: 50,
     scale: 0.7,
     opacity: 0.3,
@@ -204,7 +204,7 @@ function ServiceContentAnimation() {
     scrollTrigger: serviceTigger,
   });
   gsap.from(".service-technology h4", {
-    x: 500,
+    x: 300,
     y: -50,
     duration: 1,
     ease: "power1.out",
@@ -270,3 +270,51 @@ function serviceScroller() {
     },
   });
 }
+
+var whyus = document.querySelectorAll(".why-us-text-box");
+
+whyus.forEach(function (elem) {
+  gsap.from(elem, {
+    y: 200,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: elem,
+      scroller: "#main",
+      start: "top 75%",
+      toggleActions: "play none none none",
+      // markers: true,
+    },
+  });
+});
+
+// SVG Path Draw Animation
+const path = document.querySelector(".draw-path");
+
+// Get total path length
+const pathLength = path.getTotalLength();
+
+// Hide path initially
+gsap.set(path, {
+  strokeDasharray: pathLength,
+  strokeDashoffset: pathLength,
+});
+
+// Draw path on scroll
+gsap.to(path, {
+  strokeDashoffset: 0,
+  ease: "none",
+  delay: 1,
+  scrollTrigger: {
+    trigger: "#about-section",
+    scroller: "#main",
+    start: "top 40%",
+    end: "+=100%",
+    scrub: 1,
+    anticipatePin: 1,
+    // markers: true,
+  },
+});
+
