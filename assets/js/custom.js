@@ -271,50 +271,53 @@ function serviceScroller() {
   });
 }
 
-var whyus = document.querySelectorAll(".why-us-text-box");
+function whyusAnimation() {
+  var whyus = document.querySelectorAll(".why-us-text-box");
+  whyus.forEach(function (elem) {
+    gsap.from(elem, {
+      y: 200,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: elem,
+        scroller: "#main",
+        start: "top 75%",
+        toggleActions: "play none none none",
+        // markers: true,
+      },
+    });
+  });
+}
+whyusAnimation();
+function aboutLineAnimation() {
+  // SVG Path Draw Animation
+  const path = document.querySelector(".draw-path");
 
-whyus.forEach(function (elem) {
-  gsap.from(elem, {
-    y: 200,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.2,
-    ease: "power3.out",
+  // Get total path length
+  const pathLength = path.getTotalLength();
+
+  // Hide path initially
+  gsap.set(path, {
+    strokeDasharray: pathLength,
+    strokeDashoffset: pathLength,
+  });
+
+  // Draw path on scroll
+  gsap.to(path, {
+    strokeDashoffset: 0,
+    ease: "none",
+    delay: 1,
     scrollTrigger: {
-      trigger: elem,
+      trigger: "#about-section",
       scroller: "#main",
-      start: "top 75%",
-      toggleActions: "play none none none",
+      start: "top 40%",
+      end: "+=100%",
+      scrub: 1,
+      anticipatePin: 1,
       // markers: true,
     },
   });
-});
-
-// SVG Path Draw Animation
-const path = document.querySelector(".draw-path");
-
-// Get total path length
-const pathLength = path.getTotalLength();
-
-// Hide path initially
-gsap.set(path, {
-  strokeDasharray: pathLength,
-  strokeDashoffset: pathLength,
-});
-
-// Draw path on scroll
-gsap.to(path, {
-  strokeDashoffset: 0,
-  ease: "none",
-  delay: 1,
-  scrollTrigger: {
-    trigger: "#about-section",
-    scroller: "#main",
-    start: "top 40%",
-    end: "+=100%",
-    scrub: 1,
-    anticipatePin: 1,
-    // markers: true,
-  },
-});
-
+}
+aboutLineAnimation();
