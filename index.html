@@ -10,6 +10,23 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <nav class="">
+      <div class="nav-wrapper">
+        <div class="nav-logo">
+          <img src="./assets/images/logo-web-educare-center.svg" alt="">
+          <img src="./assets/images/logo-icon.svg" alt="">
+        </div>
+        <div class="nav-menu">
+          <ul>
+            <a href="#" class="shuffle">Home</a>
+            <a href="#" class="shuffle">About</a>
+            <a href="#" class="shuffle">Courses</a>
+            <a href="#" class="shuffle">Spotlight</a>
+          </ul>
+        </div>
+        <div class="nav-cta"><a href="#" class="secondary-button"><span class="shuffle">Contact Us</span></a></div>
+      </div>
+    </nav>
     <div id="main">
       <!-- Banner Section starts -->
       <section class="banner_container">
@@ -18,7 +35,7 @@
         </figure>
         <div class="video_wraper">
           <video autoplay muted loop playsinline preload="auto">
-            <source src="./assets/images/banner-video.mp4" type="video/mp4" />
+            <source src="./assets/images/banner-video.webm" type="video/webm" />
           </video>
         </div>
         <div class="my_xl_container content_wrapper">
@@ -39,7 +56,6 @@
         </div>
       </section>
       <!-- Banner Section End -->
-
       <!-- canva Section -->
       <section class="canva-sec">
         <!-- <div class="canva-overlay"></div> -->
@@ -49,7 +65,7 @@
         <div class="canva-container my_xl_container">
           <div class="canva_main" data-scroll data-scroll-speed="-1">
             <figure class="sir-profile" data-scroll data-scroll-class="fade-up" data-scroll-offset="20%">
-              <img src="./assets/images/img-sir_profile.png" alt="" />
+              <img src="./assets/images/img-sir_profile.png" alt="" loading="lazy" />
             </figure>
             <div class="canva-inner wrapper">
               <div class="canva_header">
@@ -83,7 +99,7 @@
                 <div class="review_thumb_box">
                   <div>
                     <figure class="review_thumb_2">
-                      <img src="./assets/images/img-review-thumbs_2.png" alt="" />
+                      <img src="./assets/images/img-review-thumbs_2.png" alt="" loading="lazy" />
                     </figure>
                   </div>
                 </div>
@@ -107,23 +123,23 @@
                   <div class="portfolio_wrapper swiper myslider">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide portfolio_image">
-                        <img src="https://static.wixstatic.com/media/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg" />
+                        <img src="https://static.wixstatic.com/media/554ccd_782315a603db41868a3552da653c0b44~mv2.jpg" loading="lazy" />
                       </div>
 
                       <div class="swiper-slide portfolio_image">
-                        <img src="https://static.wixstatic.com/media/554ccd_a27a60894c6849798d0cd7bc93409061~mv2.jpg" />
+                        <img src="https://static.wixstatic.com/media/554ccd_a27a60894c6849798d0cd7bc93409061~mv2.jpg" loading="lazy" />
                       </div>
 
                       <div class="swiper-slide portfolio_image">
-                        <img src="https://static.wixstatic.com/media/554ccd_64d574764467438eb916753cc4f6e293~mv2.jpg" />
+                        <img src="https://static.wixstatic.com/media/554ccd_64d574764467438eb916753cc4f6e293~mv2.jpg" loading="lazy" />
                       </div>
 
                       <div class="swiper-slide portfolio_image">
-                        <img src="https://static.wixstatic.com/media/554ccd_54a29bad112e430f8ea2ab186c5eeb39~mv2.jpg" />
+                        <img src="https://static.wixstatic.com/media/554ccd_54a29bad112e430f8ea2ab186c5eeb39~mv2.jpg" loading="lazy" />
                       </div>
 
                       <div class="swiper-slide portfolio_image">
-                        <img src="https://static.wixstatic.com/media/554ccd_47eab987264e44d7ab403c076f9033f0~mv2.jpg" />
+                        <img src="https://static.wixstatic.com/media/554ccd_47eab987264e44d7ab403c076f9033f0~mv2.jpg" loading="lazy" />
                       </div>
                     </div>
                   </div>
@@ -143,7 +159,6 @@
         </div>
       </section>
       <!-- canva Section -->
-
       <!-- ABout-section -->
       <section id="about-section">
         <div class="line-animation" bis_skin_checked="1">
@@ -184,16 +199,16 @@
             </div>
           </div>
           <div class="about-img-container">
-            <img src="./assets/images/about-demo.webp" alt="" />
+            <img src="./assets/images/about-demo.webp" alt="" loading="lazy" />
           </div>
         </div>
       </section>
       <div id="image-target-section"></div>
       <!-- Counters -->
       <section id="proven-result">
-        <div class="blur-bg"></div>
+        <!-- <div class="blur-bg"></div> -->
         <div class="result-bg-container">
-          <video src="./assets/images/banner-video-2.mp4" autoplay muted loop></video>
+          <video preload="none" src="./assets/images/results-bg-video.webm" autoplay muted loop></video>
         </div>
         <div class="my_xl_container results-wrapper">
           <div class="result-head">
@@ -231,7 +246,7 @@
       </section>
 
       <!-- Courses we offer -->
-      <section id="courses-we-offer">
+      <section id="courses-we-offer" data-scroll data-scroll-speed="1">
         <div class="blur-bg"></div>
         <div class="container-mid course-wrapper">
           <div class="courses-head">
@@ -242,9 +257,18 @@
           <div class="course-card-container">
             <div class="card">
               <div class="card-video">
-                <video autoplay muted loop playsinline src="./assets/images/banner-video-2.mp4" data-scroll data-scroll-speed="1"></video>
+                <video
+                  preload="none"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  src="./assets/images/service-video-demo.webm"
+                  data-scroll
+                  data-scroll-speed="1"
+                ></video>
               </div>
-              <img src="./assets/images/img-Webdesign.webp" alt="" data-scroll data-scroll-speed="1" />
+              <img src="./assets/images/img-Webdesign.webp" alt="" loading="lazy" data-scroll data-scroll-speed="1" />
               <div class="card-over" data-scroll data-scroll-speed="3">
                 <i class="ri-circle-fill"></i>
                 <h5>Webdesign</h5>
@@ -253,7 +277,7 @@
             </div>
             <div class="card">
               <div class="card-video" data-scroll data-scroll-speed="1">
-                <video autoplay muted loop playsinline src="./assets/images/banner-video-2.mp4"></video>
+                <video preload="none" autoplay muted loop playsinline src="./assets/images/service-video-demo.webm"></video>
               </div>
               <img src="./assets/images/img-Frontend-Coding.webp" alt="Frontend Coding" data-scroll data-scroll-speed="1" />
               <div class="card-over" data-scroll data-scroll-speed="3">
@@ -264,9 +288,9 @@
             </div>
             <div class="card">
               <div class="card-video" data-scroll data-scroll-speed="1">
-                <video autoplay muted loop playsinline src="./assets/images/banner-video-2.mp4"></video>
+                <video preload="none" autoplay muted loop playsinline src="./assets/images/service-video-demo.webm"></video>
               </div>
-              <img src="./assets/images/img-Graphic-Designer.webp" alt="" data-scroll data-scroll-speed="1" />
+              <img src="./assets/images/img-Graphic-Designer.webp" alt="" loading="lazy" data-scroll data-scroll-speed="1" />
               <div class="card-over" data-scroll data-scroll-speed="3">
                 <i class="ri-circle-fill"></i>
                 <h5>Graphic Designing</h5>
@@ -275,9 +299,9 @@
             </div>
             <div class="card">
               <div class="card-video" data-scroll data-scroll-speed="1">
-                <video autoplay muted loop playsinline src="./assets/images/banner-video-2.mp4"></video>
+                <video preload="none" autoplay muted loop playsinline src="./assets/images/service-video-demo.webm"></video>
               </div>
-              <img src="./assets/images/img-Backend-Development.webp" alt="" data-scroll data-scroll-speed="1" />
+              <img src="./assets/images/img-Backend-Development.webp" alt="" loading="lazy" data-scroll data-scroll-speed="1" />
               <div class="card-over" data-scroll data-scroll-speed="3">
                 <i class="ri-circle-fill"></i>
                 <h5>Backend Development</h5>
@@ -300,7 +324,7 @@
               <div class="service-outerContainer">
                 <div class="service-container">
                   <div class="service-img">
-                    <img src="./assets/images/img-Developments.png" alt="" />
+                    <img src="./assets/images/img-Developments.webp" alt="" loading="lazy" />
                   </div>
                   <div class="service-content">
                     <h2 class="comn-head gradient-text">Development</h2>
@@ -327,10 +351,10 @@
               <div class="service-outerContainer">
                 <div class="service-container">
                   <div class="service-img">
-                    <img src="./assets/images/img-Developments.png" alt="" />
+                    <img src="./assets/images/img-graphic-design.webp" alt="" loading="lazy" />
                   </div>
                   <div class="service-content">
-                    <h2 class="comn-head gradient-text">Development</h2>
+                    <h2 class="comn-head gradient-text">Graphic Design</h2>
                     <div class="comn-text">
                       <p>
                         We create modern, responsive, and high-performing websites tailored to your business goals. Our Developers ensure seamless
@@ -354,10 +378,37 @@
               <div class="service-outerContainer">
                 <div class="service-container">
                   <div class="service-img">
-                    <img src="./assets/images/img-Developments.png" alt="" />
+                    <img src="./assets/images/img-uiux-design.webp" alt="" loading="lazy" />
                   </div>
                   <div class="service-content">
-                    <h2 class="comn-head gradient-text">Development</h2>
+                    <h2 class="comn-head gradient-text">UI/UX Design</h2>
+                    <div class="comn-text">
+                      <p>
+                        We create modern, responsive, and high-performing websites tailored to your business goals. Our Developers ensure seamless
+                        functionality across all devices.
+                      </p>
+                    </div>
+                    <div class="service-technology">
+                      <h4>React.js</h4>
+                      <h4>Node.js</h4>
+                      <h4>Bootstrap</h4>
+                      <h4>WordPress</h4>
+                      <h4>Shopify</h4>
+                      <h4>WooCommerce</h4>
+                      <h4>Laravel (PHP)</h4>
+                      <h4>CodeIgniter</h4>
+                    </div>
+                    <a href="#" class="ctm-link">Lets Talk <i class="ri-arrow-right-long-line"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="service-outerContainer">
+                <div class="service-container">
+                  <div class="service-img">
+                    <img src="./assets/images/img-ai-courses.webp" alt="" loading="lazy" />
+                  </div>
+                  <div class="service-content">
+                    <h2 class="comn-head gradient-text">Gen Ai Courses</h2>
                     <div class="comn-text">
                       <p>
                         We create modern, responsive, and high-performing websites tailored to your business goals. Our Developers ensure seamless
@@ -402,7 +453,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -420,7 +471,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -438,7 +489,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -456,7 +507,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -474,7 +525,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -492,7 +543,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -510,7 +561,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -528,7 +579,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -546,7 +597,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -564,7 +615,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -582,7 +633,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -600,7 +651,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -618,7 +669,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -636,7 +687,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -654,7 +705,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -672,7 +723,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -692,7 +743,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -710,7 +761,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -728,7 +779,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -746,7 +797,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -764,7 +815,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -782,7 +833,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -800,7 +851,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -818,7 +869,7 @@
             <div class="review-card">
               <div class="review-profile">
                 <figure class="review-profile-img">
-                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" />
+                  <img src="./assets/images/img-Frontend-Coding.webp" alt="" loading="lazy" />
                 </figure>
                 <h6>
                   Marcus Thome
@@ -1273,8 +1324,18 @@
 
       <section id="why-choose-us">
         <div class="why-us-overlay-bottom"></div>
-        <div class="technology-video-1"></div>
-        <div class="technology-video-2"></div>
+        <div class="technology-video-1">
+          <div class="overlay-top"></div>
+          <div class="overlay-bottom"></div>
+          <div class="overlay-right"></div>
+          <video autoplay loop muted playsinline preload="none" src="./assets/images/technology-video.webm" type="video/webm"></video>
+        </div>
+        <div class="technology-video-2">
+          <div class="overlay-top"></div>
+          <div class="overlay-bottom"></div>
+          <div class="overlay-right"></div>
+          <video autoplay loop muted playsinline preload="none" src="./assets/images/technology-video.webm" type="video/webm"></video>
+        </div>
         <div class="my_xl_container course-wrapper">
           <div class="why-us-overlay"></div>
 
@@ -1344,7 +1405,30 @@
             <a href="#" class="secondary-button"><span class="shuffle">Join Us Now</span></a>
           </div>
           <div class="footer-seat">
-            <video autoplay loop muted playinline src="https://huly.io/videos/cta/clock.mp4?updated=20240531154316"></video>
+            <div class="footer-seat-wrapper">
+              <div class="footer-seat-content">
+                <h4 class="gradient-text">2 Seat</h4>
+                <p>available for 2026</p>
+              </div>
+              <video preload="none" autoplay loop muted playinline src="./assets/images/demo-video.mp4"></video>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom-info">
+          <p>© 2026 Web Educare Center. All rights reserved</p>
+          <span class="termsinfo">
+            <p>Terms of Services</p>
+            <p>Privacy Policy</p>
+          </span>
+          <span class="social-icons"
+            ><i class="ri-facebook-fill"></i> <i class="ri-instagram-fill"></i> <i class="ri-github-fill"></i> <i class="ri-behance-fill"></i>
+            <i class="ri-dribbble-line"></i> <i class="ri-linkedin-fill"></i
+          ></span>
+          <span class="made-with">Made with passion and love</span>
+        </div>
+        <div class="rotating-globe-wrapper">
+          <div class="rotating-globe">
+            <img src="./assets/images/img-rotating-globe.png" alt="" />
           </div>
         </div>
       </footer>

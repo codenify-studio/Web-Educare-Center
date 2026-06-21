@@ -161,6 +161,7 @@ body {
   color: #ffffff;
   background-color: #030811;
   overflow-x: hidden;
+  user-select: none;
 }
 :root {
   --body: "Inter", sans-serif;

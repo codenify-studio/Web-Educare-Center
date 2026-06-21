@@ -1,10 +1,11 @@
+let locoScroll;
 function locomotiveScript() {
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(SplitText);
 
   // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
 
-  const locoScroll = new LocomotiveScroll({
+  locoScroll = new LocomotiveScroll({
     el: document.querySelector("#main"),
     smooth: true,
   });
@@ -321,3 +322,48 @@ function aboutLineAnimation() {
   });
 }
 aboutLineAnimation();
+
+const skillswiper = new Swiper(".skills-slider", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  loop: true,
+  speed: 1000,
+  allowTouchMove: false,
+  autoplay: {
+    delay: 0,
+    disableOnInteraction: false,
+  },
+});
+
+const navbar = document.querySelector("nav");
+
+locoScroll.on("scroll", ({ scroll }) => {
+  navbar.classList.toggle("active", scroll.y >= 200);
+});
+
+function videoPreloader() {
+  const videos = document.querySelectorAll("video");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      console.log("Checking:", entry.target);
+
+      if (entry.isIntersecting) {
+        console.log("Video entered viewport");
+
+        const video = entry.target;
+        const source = video.querySelector("source");
+
+        console.log("Loading:", source.dataset.src);
+
+        source.src = source.dataset.src;
+        video.load();
+
+        observer.unobserve(video);
+      }
+    });
+  });
+
+  videos.forEach((video) => observer.observe(video));
+}
+// videoPreloader();
