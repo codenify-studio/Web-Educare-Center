@@ -3,8 +3,124 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url(../css/comn-style.css);
 
-nav {
+body {
+  position: relative;
+}
+
+.loader-text {
+  position: absolute;
   z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: #030811;
+  gap: 15px;
+  /* background-image: url(../images/loader-bg.webp); */
+  background-position: bottom center;
+}
+.loader-text h5 {
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(80px);
+}
+
+.banner-loader-wrapper {
+  inset: 0;
+  height: 100dvh;
+  position: fixed;
+  z-index: 999;
+  background-color: #030811;
+}
+.banner-loader-main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-origin: center center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 5px;
+}
+.loader-top {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  height: 100dvh;
+}
+.loader-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  height: 100dvh;
+}
+.loader-img {
+  width: 100%;
+  height: 20%;
+  overflow: hidden;
+}
+.loader-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.banner-cover.middle {
+  position: absolute;
+  width: 334px;
+  height: 146px;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  z-index: 9999;
+  display: flex;
+}
+.banner-cover.middle .img-left {
+  width: 50%;
+  height: 100%;
+  background-color: rebeccapurple;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+}
+.banner-cover.middle .img-left img {
+  width: auto;
+  height: auto;
+  max-width: 1920px;
+  object-position: left center;
+  object-fit: cover;
+}
+.banner-cover.middle .img-right img {
+  width: auto;
+  height: auto;
+  max-width: 1920px;
+  object-position: right center;
+  object-fit: cover;
+}
+.banner-cover.middle .img-right {
+  width: 50%;
+  height: 100%;
+  background-color: rgb(153, 51, 85);
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+}
+.banner-loader-main.active {
+  opacity: 0;
+  transition: 0.15s;
+}
+
+nav {
+  z-index: 998;
   position: fixed;
   width: 100%;
   max-width: 1920px;
@@ -23,6 +139,8 @@ nav.active {
   display: flex;
   position: relative;
   gap: 10px;
+  border: 1px solid #ffffff00;
+  border-radius: 480px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -336,6 +454,18 @@ nav.active {
   opacity: 0;
   transform: translateY(60%);
   transition: all 1.5s ease-out;
+}
+.sir-profile-text svg {
+  width: 100%;
+}
+.sir-profile-text {
+  width: 134px;
+  position: absolute;
+  bottom: 34px;
+  left: 96px;
+}
+.sir-profile-text svg path {
+  fill: transparent;
 }
 .sir-profile::before {
   content: "";
@@ -1441,6 +1571,9 @@ nav.active {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  opacity: 0;
+  scale: 0;
+  transform-origin: center center;
 }
 .call-to-action-head h2 {
   margin-top: 40px;
@@ -1709,4 +1842,54 @@ nav.active {
 .skill-box {
   width: 70px;
   aspect-ratio: 1/1;
+}
+
+.student-loader {
+  position: absolute;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  align-content: flex-start;
+  gap: 10px;
+  background-color: #030811;
+  padding: 10px;
+}
+.student-loader .img-box {
+  background: blueviolet;
+  opacity: 0;
+  height: 44px;
+  overflow: hidden;
+  transform-origin: center center;
+}
+.student-loader :is(.hidden-box, .img-box) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hidden-box {
+  opacity: 0;
+  background: blueviolet;
+  height: 44px;
+  overflow: hidden;
+  transform-origin: center center;
+}
+.img-box,
+.hidden-box {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+#page8-trigger {
+  height: 1px;
+}
+#page8 {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  /* background: #ff0c0c; */
+  pointer-events: none;
 }

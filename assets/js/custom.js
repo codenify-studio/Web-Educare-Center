@@ -327,7 +327,7 @@ const skillswiper = new Swiper(".skills-slider", {
   slidesPerView: "auto",
   spaceBetween: 15,
   loop: true,
-  speed: 1000,
+  speed: 2000,
   allowTouchMove: false,
   autoplay: {
     delay: 0,
@@ -367,3 +367,346 @@ function videoPreloader() {
   videos.forEach((video) => observer.observe(video));
 }
 // videoPreloader();
+
+function startLoaderAnimation() {
+  var loaderTl = gsap.timeline();
+
+  loaderTl.to(".loader-text h5", {
+    x: 0,
+    opacity: 1,
+    delay: 0.5,
+    duration: 1.2,
+    stagger: 0.1,
+  });
+  loaderTl.to(".loader-text h5", {
+    x: -80,
+    opacity: 0,
+    stagger: 0.1,
+    onComplete: function () {
+      gsap.to(".loader-text", {
+        opacity: 0,
+        duration: 0,
+      });
+    },
+  });
+
+  gsap.utils.toArray(".loader-top").forEach((column) => {
+    const imgs = column.querySelectorAll(".loader-img");
+
+    // First image
+    loaderTl.from(
+      imgs[0],
+      {
+        y: -2000,
+        duration: 3,
+        delay: 1,
+      },
+      0, // all first images start together
+    );
+
+    loaderTl.from(
+      Array.from(imgs).slice(1),
+      {
+        y: -2000,
+        duration: 2,
+        stagger: 0.2,
+      },
+      ">-2", // starts slightly before previous finishes
+    );
+  });
+
+  gsap.utils.toArray(".loader-bottom").forEach((column) => {
+    const imgs = column.querySelectorAll(".loader-img");
+
+    console.log(imgs);
+
+    // First image
+    loaderTl.from(
+      imgs[0],
+      {
+        y: 2000,
+        duration: 3,
+        delay: 1,
+      },
+      0,
+    );
+
+    // Remaining images
+    loaderTl.from(
+      Array.from(imgs).slice(1),
+      {
+        y: 2000,
+        duration: 2,
+        stagger: 0.2,
+        onComplete: function () {},
+      },
+      ">-2",
+    );
+  });
+  loaderTl.to(".banner-cover.middle", {
+    width: "100%",
+    height: "100%",
+    opacity: 1,
+    duration: 1.2,
+    ease: "power3.inOut",
+    onComplete: function () {
+      gsap.to(".banner-loader-wrapper", {
+        opacity: 0,
+      });
+    },
+  });
+  loaderTl.to(".banner-cover.middle .img-left", {
+    x: -1000,
+    duration: 1.5,
+    ease: "power3.inOut",
+  });
+  loaderTl.to(
+    ".banner-cover.middle .img-right",
+    {
+      x: 1000,
+      duration: 1.5,
+      ease: "power3.inOut",
+      onComplete: () => {
+        document.querySelector(".banner-loader-wrapper").remove();
+        document.querySelector(".banner-cover").remove();
+        document.querySelector(".loader-text").remove();
+      },
+    },
+    "-=1.5",
+  );
+  loaderTl.from(
+    "nav",
+    {
+      y: -200,
+      duration: 0.6,
+    },
+    "-=0.9",
+  );
+  loaderTl.from(
+    ".content_wrapper",
+    {
+      scale: 0,
+      opacity: 0,
+      duration: 0.6,
+    },
+    "-=0.7",
+  );
+  loaderTl.from(
+    ".canva-sec",
+    {
+      y: 200,
+      duration: 0.6,
+    },
+    "-=0.5",
+  );
+  loaderTl.call(() => {
+    locoScroll.update();
+    ScrollTrigger.refresh();
+  });
+}
+
+const loaderImages = [];
+
+for (let i = 1; i <= 25; i++) {
+  const num = String(i).padStart(2, "0");
+  loaderImages.push(`./assets/images/loader/img-loader${num}.webp`);
+}
+
+Promise.all(
+  loaderImages.map((src) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = resolve;
+      img.onerror = resolve;
+    });
+  }),
+).then(() => {
+  startLoaderAnimation();
+});
+
+function sirTextAnimation() {
+  const textpaths = document.querySelectorAll(".sir-profile-text svg path");
+
+  textpaths.forEach((path) => {
+    const length = path.getTotalLength();
+
+    gsap.set(path, {
+      stroke: path.getAttribute("fill"),
+      strokeWidth: 2,
+      fill: "transparent",
+      strokeDasharray: length,
+      strokeDashoffset: length,
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+    });
+  });
+
+  const ltl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sir-profile-text",
+      scroller: "#main",
+      start: "top 95%",
+      // markers:true,
+    },
+  });
+
+  textpaths.forEach((path) => {
+    ltl.to(
+      path,
+      {
+        strokeDashoffset: 0,
+        duration: 0.8,
+      },
+      "<0.1",
+    );
+  });
+
+  ltl.to(textpaths, {
+    fill: (_, el) => el.getAttribute("fill"),
+    stroke: "transparent",
+    duration: 0.3,
+  });
+}
+sirTextAnimation();
+
+function studentLoader() {
+  const loader = document.querySelector(".student-loader");
+  const fragment = document.createDocumentFragment();
+
+  const totalBoxes = 800;
+  const totalImages = 25;
+
+  for (let i = 0; i < totalBoxes; i++) {
+    const box = document.createElement("div");
+    box.className = "img-box";
+
+    // Random image number between 1 and 25
+    const random = Math.floor(Math.random() * totalImages) + 1;
+
+    // Add leading zero (01, 02, ..., 25)
+    const imageNumber = String(random).padStart(2, "0");
+
+    box.innerHTML = `
+    <img src="./assets/images/loader/img-loader${imageNumber}.webp" alt="" loading="lazy">
+  `;
+    fragment.appendChild(box);
+    if (Math.random() < 0.3) {
+      box.className = "hidden-box";
+    } else {
+      box.className = "img-box";
+    }
+  }
+
+  loader.appendChild(fragment);
+}
+studentLoader();
+ScrollTrigger.create({
+  trigger: "#page8-trigger",
+  scroller: "#main",
+  start: "top center",
+  once: true,
+
+  onEnter() {
+    openPage8();
+  },
+});
+function openPage8() {
+  locoScroll.stop();
+
+  gsap.set("#page8", {
+    display: "block",
+    pointerEvents: "auto",
+  });
+
+  gsap.to("#page8", {
+    opacity: 1,
+    duration: 0.35,
+    onComplete: playPage8Animation,
+  });
+}
+function playPage8Animation() {
+  const studentTl = gsap.timeline({
+    onComplete: closePage8,
+  });
+
+  gsap.set(".img-box, .hidden-box", {
+    autoAlpha: 0,
+    scale: 0.7,
+  });
+
+  studentTl.to(".img-box", {
+    autoAlpha: 1,
+    scale: 1,
+    duration: 1,
+    stagger: {
+      amount: 0.8,
+      from: "random",
+    },
+    ease: "power2.out",
+  });
+
+  studentTl.to(".hidden-box", {
+    opacity: 1,
+    autoAlpha: 1,
+    scale: 1,
+    scale: 1,
+    duration: 1,
+    stagger: {
+      amount: 0.8,
+      from: "random",
+    },
+    ease: "power2.out",
+  });
+  studentTl.to(".img-box", {
+    x: 2000,
+    duration: 2,
+    stagger: {
+      amount: 0.4,
+      from: "random",
+    },
+    ease: "power2.out",
+  });
+  studentTl.to(
+    ".hidden-box",
+    {
+      x: -2000,
+      duration: 2,
+      stagger: {
+        amount: 0.4,
+        from: "random",
+      },
+      ease: "power2.out",
+      onComplete: function () {
+        gsap.to(".call-to-action-head", {
+          opacity: 1,
+          ease: "power3.out",
+          scale: 1,
+        });
+      },
+    },
+    "-=2",
+  );
+  studentTl.to(
+    ".student-loader",
+    {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    },
+    "-=1",
+  );
+}
+function closePage8() {
+  gsap.to("#page8", {
+    autoAlpha: 0,
+    duration: 0.2,
+    onComplete: () => {
+      gsap.set("#page8", {
+        display: "none",
+      });
+
+      locoScroll.start();
+    },
+  });
+}
