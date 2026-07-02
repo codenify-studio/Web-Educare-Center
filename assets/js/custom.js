@@ -588,7 +588,7 @@ function studentLoader() {
     const imageNumber = String(random).padStart(2, "0");
 
     box.innerHTML = `
-    <img src="./assets/images/loader/img-loader${imageNumber}.webp" alt="" loading="lazy">
+    <img src="./assets/images/loader-2/loader-student${imageNumber}.webp" alt="" loading="lazy">
   `;
     fragment.appendChild(box);
     if (Math.random() < 0.3) {
