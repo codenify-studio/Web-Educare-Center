@@ -64,6 +64,7 @@ function canvaSlider() {
 canvaSlider();
 
 function aboutTimeAnima() {
+  const mm = gsap.matchMedia();
   var aboutTime = gsap.timeline({
     scrollTrigger: {
       trigger: "#about-section",
@@ -94,19 +95,21 @@ function aboutTimeAnima() {
     "-=0.9",
   );
   aboutTime.fromTo(".about-text p", { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.15, ease: "Power3.out", duration: 1 }, "-=0.8");
-  gsap.to(".about-img-container", {
-    width: "100%",
-    height: "80vh",
-    top: "100vh",
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#about-section",
-      scroller: "#main",
-      start: "top top",
-      end: "+=100%",
-      scrub: 1,
-      anticipatePin: 1,
-    },
+  mm.add("(min-width: 1025px)", () => {
+    gsap.to(".about-img-container", {
+      width: "100%",
+      height: "80vh",
+      top: "100vh",
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#about-section",
+        scroller: "#main",
+        start: "top top",
+        end: "+=100%",
+        scrub: 1,
+        anticipatePin: 1,
+      },
+    });
   });
 }
 aboutTimeAnima();
@@ -709,4 +712,12 @@ function closePage8() {
       locoScroll.start();
     },
   });
+}
+
+if (window.innerWidth <= 1025) {
+  document.querySelectorAll("[data-scroll-speed]").forEach((el) => {
+    el.removeAttribute("data-scroll-speed");
+  });
+
+  locoScroll.update();
 }
